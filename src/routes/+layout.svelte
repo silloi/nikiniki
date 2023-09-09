@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import Header from './Header.svelte';
 
 	export let data;
 
@@ -19,5 +20,7 @@
 		return () => subscription.unsubscribe();
 	});
 </script>
+
+<Header />
 
 <slot />
