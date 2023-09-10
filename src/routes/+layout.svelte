@@ -32,9 +32,13 @@
 </div>
 
 <style>
+	:global(html, body, #svelte) {
+		height: 100%;
+	}
+
 	.layout {
 		display: flex;
-		flex: 1;
+		height: 100%;
 	}
 
 	.side {

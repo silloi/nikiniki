@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
+	import InputForm from './InputForm.svelte';
 	import TimeLine from './TimeLine.svelte';
 
 	export let data;
@@ -21,16 +21,31 @@
 	}
 </script>
 
-<form method="POST" action="?/createPost" use:enhance>
-	<input type="text" name="content" bind:value={content} />
-	<button>Post</button>
-</form>
-
-{#if data.session}
-	<p>client-side data fetching with RLS</p>
-	<section>
-		{#each loadedData as row}
-			<TimeLine created_at={row.created_at} content={row.content} />
-		{/each}
+<main>
+	<section class="timeline">
+		<!-- <p>client-side data fetching with RLS</p> -->
+		{#if data.session}
+			{#each loadedData as row}
+				<TimeLine created_at={row.created_at} content={row.content} />
+			{/each}
+		{/if}
 	</section>
-{/if}
+
+	<InputForm bind:content />
+</main>
+
+<style>
+	main {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+	}
+
+	.timeline {
+		display: flex;
+		flex-direction: column-reverse;
+		overflow-y: scroll;
+		flex: 1;
+	}
+</style>
