@@ -21,6 +21,26 @@
 	});
 </script>
 
-<Header />
+<div class="layout">
+	<div class="side">
+		<Header />
+	</div>
 
-<slot />
+	<div class="center">
+		<slot />
+	</div>
+</div>
+
+<style>
+	.layout {
+		display: flex;
+	}
+
+	.side {
+		width: 12rem;
+	}
+
+	.center {
+		width: 100%;
+	}
+</style>
