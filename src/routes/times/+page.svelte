@@ -8,7 +8,11 @@
 
 	let loadedData: any[] | null = [];
 	async function loadData() {
-		const { data: result } = await data.supabase.from('times').select('*').limit(20);
+		const { data: result } = await data.supabase
+			.from('times')
+			.select('*')
+			.limit(20)
+			.order('created_at', { ascending: false });
 		loadedData = result;
 	}
 

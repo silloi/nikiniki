@@ -15,7 +15,8 @@ export const load = async ({ params, parent }) => {
 		.from('times')
 		.select('*')
 		.gte('created_at', `${params.year}-${params.month}-${params.date}:00:00:00`)
-		.lte('created_at', `${params.year}-${params.month}-${params.date}:23:59:59`);
+		.lte('created_at', `${params.year}-${params.month}-${params.date}:23:59:59`)
+		.order('created_at', { ascending: false });
 
 	return {
 		user: session.user,
