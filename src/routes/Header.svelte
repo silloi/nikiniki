@@ -7,10 +7,13 @@
 	const thisDate = today.getDate();
 	const thisDay = today.getDay();
 
-	const thisSunday = new Date(thisYear, thisMonth, thisDate - (thisDay ?? 7));
+	const thisMonday =
+		thisDay === 0
+			? new Date(thisYear, thisMonth, thisDate - 6) // start with last Monday
+			: new Date(thisYear, thisMonth, thisDate + 1);
 
 	const thisWeekString = [...Array(7).keys()].map((i) => {
-		const date = new Date(thisSunday);
+		const date = new Date(thisMonday);
 		date.setDate(date.getDate() + i);
 
 		return createDatePath(date.getFullYear(), date.getMonth(), date.getDate());
