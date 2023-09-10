@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { createTimestampLabel } from '$lib/time';
+	import Timestamp from './Timestamp.svelte';
 
 	export let created_at = '';
 	export let content = '';
@@ -7,7 +8,7 @@
 
 <dl>
 	<dt class="timestamp">
-		{createTimestampLabel(new Date(created_at))}
+		<Timestamp timestamp={new Date(created_at)} />
 	</dt>
 	<dd class="content">
 		{content}
@@ -17,13 +18,16 @@
 <style>
 	dl {
 		display: flex;
+		margin: 0.5rem 0;
 	}
 
 	.timestamp {
-		width: 3.5rem;
+		width: 3rem;
+		flex: auto 0;
 	}
 
 	.content {
 		margin: 0;
+		flex: 1;
 	}
 </style>
