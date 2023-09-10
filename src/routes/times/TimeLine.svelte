@@ -1,11 +1,13 @@
 <script lang="ts">
+	import { createTimestampLabel } from '$lib/time';
+
 	export let created_at = '';
 	export let content = '';
 </script>
 
 <dl>
 	<dt class="timestamp">
-		{new Date(created_at).toLocaleString().slice(-8, -3)}
+		{createTimestampLabel(new Date(created_at))}
 	</dt>
 	<dd class="content">
 		{content}
