@@ -34,6 +34,7 @@
 <style>
 	.layout {
 		display: flex;
+		flex: 1;
 	}
 
 	.side {
@@ -41,6 +42,6 @@
 	}
 
 	.center {
-		width: 100%;
+		flex: 1;
 	}
 </style>
