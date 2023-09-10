@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import TimeLine from './TimeLine.svelte';
 
 	export let data;
 
@@ -23,5 +24,9 @@
 
 {#if data.session}
 	<p>client-side data fetching with RLS</p>
-	<pre>{JSON.stringify(loadedData, null, 2)}</pre>
+	<section>
+		{#each loadedData as row}
+			<TimeLine created_at={row.created_at} content={row.content} />
+		{/each}
+	</section>
 {/if}
